@@ -1,10 +1,8 @@
 title: jekyll-rtd-theme
 description: Just another documentation theme compatible with GitHub Pages
-
+url: "https://polosesy.github.io/"
 theme: null
 
-baseurl:"" # the subpath of your site, e.g. /blog/
-url:"https://polosesy/github.io/" # the base hostname & protocol for your site
 
 # debug:
 #   compress: true
