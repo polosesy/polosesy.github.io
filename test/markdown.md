@@ -2,33 +2,59 @@
 sort: 1
 ---
 
-# Markdown Elements
+# 11월 10일 MSA강의 
+비인증 open API의 예 ex) 파파고
+임베디드 H2DB
 
-Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
+Microservice 개발 (TDD기반)
 
-There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
+ - Spring Boot 2.x
+ - Reds Session
+ - Embedded H2 Database. ORM(Object releation... )
+ - Embedded Tomcat (JNDI Data source)
+ - Hibermate 
+ - Rest API
+   - RestController.
+   - MVC(Model(DB,DTO(data trance object),VO(view object - json,xml,jsp..)) view control)
 
-There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
+MSA 개발 > 빌드/패키징/테스트 > 이미지 제작 > 테스트 (Docker, k8s) > Docker Regi에 push(등록) > Helm Chart 제작 
+개발 Python(Flask)
 
-> There should be no margin above this first sentence.
->
-> Blockquotes should be a lighter gray with a gray border along the left side.
->
-> There should be no margin below this final sentence.
+Azure 구독신청
+ 사용할 자원 (후에 Terraform 자동생성)
+ 1. vNET
+ 2. VM(BootStrap(Jenkins,Nexus,Gitlab,EFK,SonaCube),Master1~2,Worker1~3,) > AKS(Kubernetes > KubeSpray로 구성)
+    Local VM Ubuntu Terraform 구성 > Azure 
+ 4. ACR (azure container registry)
+ 5. Monitering(Grafana, Prometeus,wevescope,instana,APM)
+
+Service Mesh (운영용으로 사용할만큼 좋은가?, 비용/자원효율성? 부분에 대해서 아직 도전을 받는다)
+  Istio + envoy + Kiali
+  MSA APP > Deploy
+  ArogoCD + GitOps 
+  개념,개용 활용 > Spring Cloud
+  
+ MSA 1세대 : Spring Clud/boot (VM or Container) | 운영 서비스 중점.
+ MSA 1.5세대 : Spring Cloud/ + GitOps + K8s(Helm,ArogoCD,FlexCD) | 운영화.
+ MSA 2세대 : Spring Clud/boot + Vert.X,AKKA(클러스터 기반 고성능 분산,서비스를 해주는것) + K8s | 시범,테스트,개발. (운영은 힘들다)
+ MSA 3세대 : SideCar ~ Istio + Envoy(proxy) + K8s | 시범,테스트,개발.
+ MSA 4세대 : SideCar ~ Istio + Envoy(proxy) + K8s + serverless(클라우드제공) | 시범,테스트,개발. 
+ 
+ OCP(Service Mesh)도 현재는 시범적
+  
+
+
 
 # Header 1
 
-This is a normal paragraph following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
+
 
 ## Header 2
 
-> This is a blockquote following a header. Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.
 
 ### Header 3
 
-```
-This is a code block following a header.
-```
+
 
 #### Header 4
 
