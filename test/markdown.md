@@ -42,6 +42,86 @@ Service Mesh (운영용으로 사용할만큼 좋은가?, 비용/자원효율성
  
  OCP(Service Mesh)도 현재는 시범적
   
+Cloud Native Application = Saas (sofrware as a service)
+ 핵심은 서비스 
+ 어플리케이션을 여러개의 서로 독립적인 서비스로 구분
+
+
+기존 어플리케이션 아키텍쳐
+Scale UP(스펙을 업)
+Monolithic (하나의 어플리케이션에 통으로)
+Stateful 
+Tightly coupled(전체가 묶여있어 하나가 변경되면 관련된 모든것이 바뀌어야한다,의존성)
+
+마이크로서비스 아키텍쳐
+Scale out(성능 향상이 아닌 수평적 확장)
+
+MSA 서비스 장점.
+하나의 리전이 아닌 각각 다른 리전에 서비스를 베포하여 서비스의 중단 없이 서비스가 가능
+
+Microservices 
+12-Factors
+Multi-tenancy
+PaaS
+Container
+
+
+Auto 스케일링,과 replecation 은 연관 되어있다.
+
+에플리케이션을 서비스로 분리
+서비스 
+사용자 관리(인터페이스- REST,Thnift,Protocol buffer,AMQP)
+사용자 데이터
+업무상의 기능 또는 역할을 하나의 기능 무음으로 개발된 컴포넌트 > 한가지의 역할만 수행
+REST API들을 통해 서비스들의 기능을 제공하고 사용
+데이터를 공유하지 않고 서비스별로 독립적으로 저장.
+
+임베디드 데이터베이스를 사용할때 클러스터링 되어있지 않다면 데이터 저장 영역은 공유하도록 한다.
+
+모놀리틱한 서비스를 > 마이크로 서비스로 변경할때 (쿼리가 중요) 
+기존 프로젝트를 바꾸는건 힘들다.
+	어플리케이션 영향도 분석 툴
+
+Microservices 모델링 (방법론적)
+  Domain Driven Design
+  Bounded Context
+  Contract-First(API-First) Design (API를 세분화,  ex)기업의 조직의 세분화 처럼,)
+  Decomposed database
+  Event-Driven Archiecture (상호간의 커뮤니케이션을 위한 이벤트들을 어떻게 처리할 것 인가)
+
+마이크로서비스를 이해하기 위해
+도메인에 대한 이해
+애플리케이션의 바운더리 이해
+API
+
+유저시나리오 대로 구현 ( TDD 방식 개발)
+로드러너(부하테스트)
+Jmeter(부하테스트)
+
+마이크로서비스를 어떻게 구성하고 배치할 것 인가 (설계)
+
+Redis의 용도 
+세션 클러스터링
+데이터베이스를 캐싱해준다.
+불필요한 패치 동작을 줄여 (DB의 부담을 줄여준다)
+
+Aggregator - 하나를 받아서 분기를 해준다.
+proxy - 데이터 캐싱 역할도 해준다. 들어온 곳을 하나로 만들어주고 일반적으로 보안적으로도 사용, 내부를 바로 접근할 수 없도록 프록시를 거쳐 서비스에 접근하도록 한다.
+
+서비스 체이닝,서비스의 흐름이 보여야한다.
+업무 프로세스가 거쳐가는 단계가 보여야한다.
+Istio,ArogoCD등(service mesh)을 사용하는 이유는 서비스의 흐름을 파악하기위해, 가시성을 갖기위해,
+
+데이터 베이스를 구성하는 방법
+Isolated
+Semi-Shared (MSA에서 많이 사용)
+Shared
+
+Poster SQL 사용하는 이유(SaaS형 애플리케이션의 적합)
+네임스페이스 별로 다른 네임스페이스를 정의하고 다른 별도의 스페이스를 사용할 수 있다.
+멀티 테넌트형 
+
+다른 DB는 테넌트 ID를 table에 지정하여 사용
 
 
 
