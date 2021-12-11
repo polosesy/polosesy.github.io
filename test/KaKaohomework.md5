@@ -1,0 +1,104 @@
+---
+sort: 1
+---
+
+# 카카오 과제 진행
+
+우분투 리눅스 VM 생성 후 ssh 접속 172.16.243.143
+
+vscode > extend > remote ssh 설치 > unbuntu remote 접속 
+Mac( Command + P ) >ssh
+
+아래 링크에서 Springboot2 예제 gitclone
+https://github.com/celalaygar/Spring-Boot-2
+
+ubuntu vm
+
+mkdir github 
+mkdir chart 
+mkdir images
+
+sudo apt-get install maven
+sudo apt-get install docker.io
+
+cd github
+git clone <위의 spring-boot2>
+cd /Spring-Boot-2/1-spring-boot-HelloWorld
+
+package com.example.controller 의 mainController 소스 코드를 아래와 같은 예제로 수정
+
+예제 1) 
+
+ package com.example.controller;
+
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
+
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.core.env.Environment;
+ import org.springframework.stereotype.Component;
+
+ import java.net.InetAddress;
+ import java.net.UnknownHostException;
+
+
+@RestController
+public class MainController {
+
+    /**
+     * Get IP of the System.
+     *
+     * @return IP of the System
+     */
+    @GetMapping("/")
+    public static String getIP() {
+        InetAddress ip = null;
+        try {
+        ip = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+        e.printStackTrace();
+        }
+        return ip.getHostName() + "@" + ip.getHostAddress();
+    }
+}
+
+
+
+예제 2)
+ package com.example.controller;
+
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
+
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.core.env.Environment;
+ import org.springframework.stereotype.Component;
+ 
+ import java.net.InetAddress;
+ import java.net.UnknownHostException;
+
+
+@RestController
+public class MainController {
+
+    
+    /**
+     * Guesses the current host name.
+     */
+    @GetMapping("/")
+    public static String getHostName() {
+    try {
+        return InetAddress.getLocalHost().getHostName();
+    } catch (UnknownHostException e) {
+        return "localhost";
+    }
+    }
+}
+
+ 수정 후 해당 경로에서 mvn install > 빌드 성공 >  target 폴더에 .jar 파일 생성
+ $cd target
+ $java -jar < 빌드 결과물 >.jar 
+ 
+ 
