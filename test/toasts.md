@@ -2,15 +2,22 @@
 sort: 2
 ---
 
-# Toasts Card
+# CKA Certificate
 
 THIS IS TOO LONG, NEED UPDATE! HERE IS SOME IDEAS:
 
 - https://primer.style/css/components/box
 - https://primer.style/css/components/toasts
 
+<details markdown="1">
+<summary>접기/펼치기</summary>
+
+<!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
 ```note
-## This is a note
+Answer:
+
+</details>
+
 
 Markdown is supported, Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines
 
