@@ -12,7 +12,7 @@ sort: 2
 <summary> Q.1 : 
 </summary>
 
-```note
+```
 Answer: 
 
 ```
@@ -27,7 +27,7 @@ Answer:
 
 <!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
 
-```note
+```
 Answer: 
 kubectl run nginx-pod --image=nginx:alpine --restart=Never
 ```
@@ -37,7 +37,7 @@ kubectl run nginx-pod --image=nginx:alpine --restart=Never
 <summary> Q.2 : Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg.
 </summary>
 
-```note
+```
 Answer: 
 kubectl run messaging --generator=run-pod/v1 --restart=Never --image=redis:alpine -l tier=msg
 ```
