@@ -9,13 +9,18 @@ THIS IS TOO LONG, NEED UPDATE! HERE IS SOME IDEAS:
 - https://primer.style/css/components/box
 - https://primer.style/css/components/toasts
 
+
 <details markdown="1">
-<summary>접기/펼치기</summary>
+<summary> Q1 : Deploy a pod named nginx-pod using the nginx:alpine image.
+</summary>
 
 <!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
-```note
-Answer:
 
+```note
+Answer: 
+kubectl run nginx-pod --image=nginx:alpine --restart=Never
+
+```
 </details>
 
 
