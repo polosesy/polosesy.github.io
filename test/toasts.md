@@ -6,8 +6,23 @@ sort: 2
 
 # 예상 문제
 
+<!-- 양식 
+
 <details markdown="1">
-<summary> Q1 : Deploy a pod named nginx-pod using the nginx:alpine image.
+<summary> Q.1 : 
+</summary>
+
+```note
+Answer: 
+
+```
+</details>
+
+-->
+
+
+<details markdown="1">
+<summary> Q.1 : Deploy a pod named nginx-pod using the nginx:alpine image.
 </summary>
 
 <!--summary 아래 빈칸 공백 두고 내용을 적는공간-->
@@ -19,7 +34,7 @@ kubectl run nginx-pod --image=nginx:alpine --restart=Never
 </details>
 
 <details markdown="1">
-<summary> Q2 : Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg.
+<summary> Q.2 : Deploy a messaging pod using the redis:alpine image with the labels set to tier=msg.
 </summary>
 
 ```note
@@ -32,7 +47,7 @@ kubectl run messaging --generator=run-pod/v1 --restart=Never --image=redis:alpin
 
 
 <details markdown="1">
-<summary> Q3 : Create a namespace named apx-x9984574
+<summary> Q.3 : Create a namespace named apx-x9984574
 </summary>
 
 ```note
@@ -43,7 +58,7 @@ kubectl create ns apx-x9984574
 
 
 <details markdown="1">
-<summary> Q4 : Get the list of nodes in JSON format and store it in a file at /opt/outputs/nodes-z3444kd9.json
+<summary> Q.4 : Get the list of nodes in JSON format and store it in a file at /opt/outputs/nodes-z3444kd9.json
 </summary>
 
 ```note
@@ -54,7 +69,7 @@ kubectl get nodes -o json > /opt/outputs/nodes-z3444kd9.json
 </details>
 
 <details markdown="1">
-<summary> Q5 : Create a service messaging-service to expose the messaging application within the cluster on port 6379.
+<summary> Q.5 : Create a service messaging-service to expose the messaging application within the cluster on port 6379.
 Use imperative commands
 </summary>
 
@@ -65,7 +80,7 @@ Create a service messaging-service to expose the messaging application within th
 </details>
 
 <details markdown="1">
-<summary> Q6 : Create a deployment named hr-web-app using the image kodekloud/webapp-color with 2 replicas.
+<summary> Q.6 : Create a deployment named hr-web-app using the image kodekloud/webapp-color with 2 replicas.
 </summary>
 
 ```note
@@ -76,7 +91,7 @@ kubectl scale deploy hr-web-app –replicas=2
 </details>
 
 <details markdown="1">
-<summary> Q7 : Create a static pod named static-busybox that uses the busybox image and the command sleep 1000
+<summary> Q.7 : Create a static pod named static-busybox that uses the busybox image and the command sleep 1000
 Use imperative commands.
 </summary>
 
@@ -114,7 +129,7 @@ kubectl run –restart=Never –image=busybox static-busybox –dry-run -o yaml 
 </details>
 
 <details markdown="1">
-<summary> Q8 : Create a POD in the finance namespace named temp-bus with the image redis:alpine.
+<summary> Q.8 : Create a POD in the finance namespace named temp-bus with the image redis:alpine.
 </summary>
 
 ```note
@@ -124,7 +139,7 @@ kubectl run temp-bus -n finance –image=redis:alpine –restart=Never
 </details>
 
 <details markdown="1">
-<summary> Q9 : A new application orange is deployed. There is something wrong with it. Identify and fix the issue.
+<summary> Q.9 : A new application orange is deployed. There is something wrong with it. Identify and fix the issue.
 </summary>
 
 ```note
@@ -133,6 +148,43 @@ command sleep
 ```
 </details>
 
+
+
+<details markdown="1">
+<summary> Q.10 : Expose the hr-web-app as service hr-web-app-service application on port 30082 on the nodes on the cluster
+The web application listens on port 8080.
+</summary>
+
+```note
+Answer: 
+kubectl expose deploy hr-web-app –name=hr-web-app-service –port=33082
+kubectl expose deployment hr-web-app --type=NodePort --port=8080 --name=hr-web-app-service --dry-run -o yaml > hr-web-app-service.yaml
+```
+</details>
+
+
+<details markdown="1">
+<summary> Q.11 : Create a Persistent Volume with the given specification.
+</summary>
+
+```note
+Answer: 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-analytics
+spec:  
+  capacity:    
+  storage: 100Mi  
+  accessModes:    
+​    - ReadWriteMany  
+  hostPath:    # directory location on host    
+  path: /pv/data-analytics
+```
+#참조 
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+https://kubernetes.io/docs/concepts/storage/volumes/
+</details>
 
 <!-- 주석 처리 
 
