@@ -201,17 +201,21 @@ export now="--force --grace-period 0"   # k delete pod x $now
 ```
 
 <details markdown="1">
-<summary> Q.1 : Contexts
-Task weight: 1%
+<summary> 
+# Q.1 : Contexts
+
+`Task weight: 1%`
 
 You have access to multiple clusters from your main terminal through `kubectl` contexts. Write all those context names into `/opt/course/1/contexts`.
 
 Next write a command to display the current context into `/opt/course/1/context_default_kubectl.sh`, the command should use `kubectl`.
 
 Finally write a second command doing the same thing into `/opt/course/1/context_default_no_kubectl.sh`, but without the use of `kubectl`.
+
 </summary>
 
-#Answer:
+# Answer:
+
 
 Maybe the fastest way is just to run:
 ```shell
@@ -252,8 +256,10 @@ cat ~/.kube/config | grep current | sed -e "s/current-context: //"
 </details>
 
 <details markdown="1">
-<summary> Q.2 : Schedule Pod on Master Node 
-Task weight: 3%
+<summary> 
+# Q.2 : Schedule Pod on Master Node 
+
+`Task weight: 3%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -328,8 +334,10 @@ master nodes usually have a taint defined
 
 
 <details markdown="1">
-<summary> Q.3 : Scale down StatefulSet
-Task weight: 1%
+<summary>
+# Q.3 : Scale down StatefulSet
+
+`Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -388,8 +396,10 @@ C13 Mangement is happy again.
 
 
 <details markdown="1">
-<summary> Q.4 : Pod Ready if Service is reachable
-Task weight: 4%
+<summary> 
+# Q.4 : Pod Ready if Service is reachable
+
+`Task weight: 4%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -488,8 +498,9 @@ Look at these Pods coworking together!
 
 
 <details markdown="1">
-<summary> Q.5 : Kubectl sorting
-Task weight: 1%
+<summary> 
+# Q.5 : Kubectl sorting
+`Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -541,8 +552,10 @@ project-c13       c13-3cc-web-646b6c8756-qsg4b              ...          63m
 
 
 <details markdown="1">
-<summary> Q.6 : Storage, PV, PVC, Pod volume
-Task weight: 8%
+<summary> 
+# Q.6 : Storage, PV, PVC, Pod volume
+
+`Task weight: 8%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -679,8 +692,10 @@ We can confirm its mounting correctly:
 
 
 <details markdown="1">
-<summary> Q.7 : Node and Pod Resource Usage
-Task weight: 1%
+<summary> 
+# Q.7 : Node and Pod Resource Usage
+
+`Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -745,8 +760,10 @@ kubectl top pod --containers=true
 
 
 <details markdown="1">
-<summary> Q.8 : Get Master Information
-Task weight: 2%
+<summary> 
+# Q.8 : Get Master Information
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -849,8 +866,10 @@ You should be comfortable investigating a running cluster, know different method
 
 
 <details markdown="1">
-<summary> Q.9 : Kill Scheduler, Manual Scheduling
-Task weight: 5%
+<summary> 
+# Q.9 : Kill Scheduler, Manual Scheduling
+
+`Task weight: 5%`
 
 Use context: `kubectl config use-context k8s-c2-AC`
 
@@ -1002,8 +1021,10 @@ Back to normal.
 
 
 <details markdown="1">
-<summary> Q.10 : RBAC ServiceAccount Role RoleBinding
-Task weight: 6%
+<summary> 
+# Q.10 : RBAC ServiceAccount Role RoleBinding
+
+`Task weight: 6%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1135,8 +1156,10 @@ Done.
 
 
 <details markdown="1">
-<summary> Q.11 : DaemonSet on all Nodes
-Task weight: 4%
+<summary> 
+# Q.11 : DaemonSet on all Nodes
+
+`Task weight: 4%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1221,8 +1244,10 @@ ds-important-qhjcq        1/1     Running   ...   cluster1-worker2
 
 
 <details markdown="1">
-<summary> Q.12 : Deployment on all Nodes
-Task weight: 6%
+<summary> 
+# Q.12 : Deployment on all Nodes
+
+`Task weight: 6%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1368,8 +1393,10 @@ Warning  FailedScheduling  16s   default-scheduler  0/3 nodes are available: 1 n
 
 
 <details markdown="1">
-<summary> Q.13 : Multi Containers and Pod shared Volume
-Task weight: 4%
+<summary> 
+# Q.13 : Multi Containers and Pod shared Volume
+
+`Task weight: 4%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1471,8 +1498,10 @@ Sat Dec  7 16:05:16 UTC 2077
 
 
 <details markdown="1">
-<summary> Q.14 : Find out Cluster Information
-Task weight: 2%
+<summary> 
+# Q.14 : Find out Cluster Information
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1559,8 +1588,10 @@ The resulting /opt/course/14/cluster-info could look like:
 
 
 <details markdown="1">
-<summary> Q.15 : Cluster Event Logging
-Task weight: 3%
+<summary> 
+# Q.15 : Cluster Event Logging
+
+`Task weight: 3%`
 
 Use context: `kubectl config use-context k8s-c2-AC`
 
@@ -1641,8 +1672,10 @@ Comparing the events we see that when we deleted the whole Pod there were more t
 
 
 <details markdown="1">
-<summary> Q.16 : Namespaces and Api Resources
-Task weight: 2%
+<summary> 
+# Q.16 : Namespaces and Api Resources
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1741,8 +1774,10 @@ project-c14 with 300 resources
 
 
 <details markdown="1">
-<summary> Q.17 : Find Container of Pod and check info
-Task weight: 3%
+<summary> 
+# Q.17 : Find Container of Pod and check info
+
+`Task weight: 3%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -1813,8 +1848,10 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 
 
 <details markdown="1">
-<summary> Q.18 : Fix Kubelet
-Task weight: 8%
+<summary> 
+# Q.18 : Fix Kubelet
+
+`Task weight: 8%`
 
 Use context: `kubectl config use-context k8s-c3-CCC`
 
@@ -1919,8 +1956,10 @@ wrong path to kubelet binary specified in service config
 
 
 <details markdown="1">
-<summary> Q.19 : Create Secret and mount into Pod
-Task weight: 3%
+<summary> 
+# Q.19 : Create Secret and mount into Pod
+
+`Task weight: 3%`
 
 Do the following in a new Namespace secret. Create a Pod named secret-pod of image busybox:1.31.1 which should keep running for some time. It should be able to run on master nodes as well, create the proper toleration.
 
@@ -2059,8 +2098,10 @@ All is good.
 
 
 <details markdown="1">
-<summary> Q.20 : Update Kubernetes Version and join
-Task weight: 10%
+<summary> 
+# Q.20 : Update Kubernetes Version and join
+
+`Task weight: 10%`
 
 Use context: `kubectl config use-context k8s-c3-CCC`
 
@@ -2228,8 +2269,10 @@ We see `cluster3-worker2` is now available and up to date.
 
 
 <details markdown="1">
-<summary> Q.21 : Create a Static Pod and Service
-Task weight: 2%
+<summary> 
+# Q.21 : Create a Static Pod and Service
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c3-CCC`
 
@@ -2332,8 +2375,10 @@ Looking good.
 
 
 <details markdown="1">
-<summary> Q.22 : Check how long certificates are valid
-Task weight: 2%
+<summary> 
+# Q.22 : Check how long certificates are valid
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c2-AC`
 
@@ -2398,8 +2443,10 @@ kubeadm certs renew apiserver
 
 
 <details markdown="1">
-<summary> Q.23 : Kubelet client/server cert info
-Task weight: 2%
+<summary> 
+# Q.23 : Kubelet client/server cert info
+
+`Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c2-AC`
 
@@ -2453,8 +2500,10 @@ More about this: https://kubernetes.io/docs/reference/command-line-tools-referen
 
 
 <details markdown="1">
-<summary> Q.24 : NetworkPolicy
-Task weight: 9%
+<summary> 
+# Q.24 : NetworkPolicy
+
+`Task weight: 9%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -2621,8 +2670,10 @@ Great, looking more secure. Task done.
 
 
 <details markdown="1">
-<summary> Q.25 : Etcd Snapshot Save and Restore
-Task weight: 8%
+<summary> 
+# Q.25 : Etcd Snapshot Save and Restore
+
+`Task weight: 8%`
 
 Use context: `kubectl config use-context k8s-c3-CCC`
 
@@ -2832,7 +2883,8 @@ Awesome, backup and restore worked as our pod is gone.
 </details>
 
 <details markdown="1">
-<summary> Extra Question 1  : Find Pods first to be terminated
+<summary> 
+# Extra Question 1  : Find Pods first to be terminated
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -2938,7 +2990,8 @@ A good practice is to always set resource requests and limits. If you don't know
 
 
 <details markdown="1">
-<summary> Extra Question 2 : Curl Manually Contact API
+<summary> 
+# Extra Question 2 : Curl Manually Contact API
 
 Use context: `kubectl config use-context k8s-c1-H`
 
