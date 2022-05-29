@@ -203,14 +203,51 @@ export now="--force --grace-period 0"   # k delete pod x $now
 <details markdown="1">
 <summary> Q.1 : 
 Task weight: 1%
+
 You have access to multiple clusters from your main terminal through kubectl contexts. Write all those context names into /opt/course/1/contexts.
+
 Next write a command to display the current context into /opt/course/1/context_default_kubectl.sh, the command should use kubectl.
+
 Finally write a second command doing the same thing into /opt/course/1/context_default_no_kubectl.sh, but without the use of kubectl.
 </summary>
 
-```
-Answer: 
+#Answer:
 
+Maybe the fastest way is just to run:
+```shell
+k config get-contexts # copy manually
+
+k config get-contexts -o name > /opt/course/1/contexts
+```
+Or using jsonpath:
+```shell
+k config view -o yaml # overview
+k config view -o jsonpath="{.contexts[*].name}"
+k config view -o jsonpath="{.contexts[*].name}" | tr " " "\n" # new lines
+k config view -o jsonpath="{.contexts[*].name}" | tr " " "\n" > /opt/course/1/contexts 
+```
+The content should then look like:
+```text
+# /opt/course/1/contexts
+k8s-c1-H
+k8s-c2-AC
+k8s-c3-CCC
+```
+Next create the first command:
+```text
+# /opt/course/1/context_default_kubectl.sh
+kubectl config current-context
+```
+```shell
+➜ sh /opt/course/1/context_default_kubectl.sh
+k8s-c1-H
+```
+In the real exam you might need to filter and find information from bigger lists of resources, hence knowing a little jsonpath and simple bash filtering will be helpful.
+
+The second command could also be improved to:
+```text
+# /opt/course/1/context_default_no_kubectl.sh
+cat ~/.kube/config | grep current | sed -e "s/current-context: //"
 ```
 </details>
 
@@ -222,8 +259,8 @@ Create a single Pod of image httpd:2.4.41-alpine in Namespace default. The Pod s
 Shortly write the reason on why Pods are by default not scheduled on master nodes into /opt/course/2/master_schedule_reason .
 </summary>
 
-```
-Answer: 
+```shell
+
 
 ```
 </details>
