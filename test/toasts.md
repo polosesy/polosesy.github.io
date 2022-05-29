@@ -188,7 +188,18 @@ https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persist
 https://kubernetes.io/docs/concepts/storage/volumes/
 </details>
 
-CKA Killer.sh 예제
+# CKA Killer.sh 예제
+# CKA Simulator Kubernetes 1.23
+Pre Setup
+```
+alias k=kubectl                         # will already be pre-configured
+
+export do="--dry-run=client -o yaml"    # k get pod x $do
+
+export now="--force --grace-period 0"   # k delete pod x $now
+
+```
+
 <details markdown="1">
 <summary> Q.1 : 
 Task weight: 1%
