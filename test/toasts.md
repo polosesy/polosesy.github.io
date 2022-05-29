@@ -202,7 +202,9 @@ export now="--force --grace-period 0"   # k delete pod x $now
 
 <details markdown="1">
 <summary> 
-# Q.1 : Contexts
+Qusetion.1
+</summary>
+# Contexts
 
 `Task weight: 1%`
 
@@ -212,9 +214,11 @@ Next write a command to display the current context into `/opt/course/1/context_
 
 Finally write a second command doing the same thing into `/opt/course/1/context_default_no_kubectl.sh`, but without the use of `kubectl`.
 
+<details>
+<summary> 
+Answer:
 </summary>
 
-# Answer:
 
 
 Maybe the fastest way is just to run:
@@ -253,6 +257,7 @@ The second command could also be improved to:
 # /opt/course/1/context_default_no_kubectl.sh
 cat ~/.kube/config | grep current | sed -e "s/current-context: //"
 ```
+</details>
 </details>
 
 <details markdown="1">
