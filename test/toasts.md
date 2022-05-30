@@ -1288,7 +1288,7 @@ ds-important-qhjcq        1/1     Running   ...   cluster1-worker2
 
 
 <details markdown="1">
-<summary> # Qusetion.12 : Deployment on all Nodes
+<summary> Qusetion.12 : Deployment on all Nodes
 </summary>
 # Deployment on all Nodes
 
@@ -1921,7 +1921,7 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 
 
 <details markdown="1">
-<summary> # Question.18 : Fix Kubelet
+<summary> Question.18 : Fix Kubelet
 </summary>
 # Fix Kubelet
 
