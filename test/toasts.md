@@ -1080,7 +1080,8 @@ Create a new ServiceAccount `processor` in Namespace `project-hamster`. Create a
 Let's talk a little about RBAC resources
 A ClusterRole|Role defines a set of permissions and where it is available, in the whole cluster or just a single Namespace.
 
-A ClusterRoleBinding|RoleBinding connects a set of permissions with an account and defines where it is applied, in the whole cluster or just a single Namespace.
+A ClusterRoleBinding|RoleBinding connects a set of permissions with an account and defines where it is applied, 
+in the whole cluster or just a single Namespace.
 
 Because of this there are 4 different RBAC combinations and 3 valid ones:
 
