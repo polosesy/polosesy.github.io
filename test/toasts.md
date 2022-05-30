@@ -201,8 +201,7 @@ export now="--force --grace-period 0"   # k delete pod x $now
 ```
 
 <details markdown="1">
-<summary> 
-Qusetion.1
+<summary> Qusetion.1 : Contexts
 </summary>
 # Contexts
 
@@ -261,9 +260,9 @@ cat ~/.kube/config | grep current | sed -e "s/current-context: //"
 </details>
 
 <details markdown="1">
-<summary> 
-# Q.2 : Schedule Pod on Master Node 
-
+<summary> Question.2 : Schedule Pod on Master Node 
+</summary>
+# Schedule Pod on Master Node 
 `Task weight: 3%`
 
 Use context: `kubectl config use-context k8s-c1-H`
@@ -273,9 +272,12 @@ Create a single Pod of image `httpd:2.4.41-alpine` in Namespace `default`. The P
 
 Shortly write the reason on why Pods are by default not scheduled on master nodes into `/opt/course/2/master_schedule_reason` .
 
-</summary>
 
-# Answer:
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 First we find the master node(s) and their taints:
 ```shell
@@ -335,22 +337,26 @@ Finally the short reason why Pods are not scheduled on master nodes by default:
 # /opt/course/2/master_schedule_reason
 master nodes usually have a taint defined
 ```
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary>
-# Q.3 : Scale down StatefulSet
-
+<summary> Question.3 : Scale down StatefulSet
+</summary>
+# Scale down StatefulSet
 `Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
 
 There are two Pods named `o3db-*` in Namespace `project-c13`. C13 management asked you to scale the Pods down to one replica to save resources. Record the action.
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 If we check the Pods we see two replicas:
 ```shell
@@ -396,13 +402,15 @@ Replicas:           1 desired | 1 total
 
 C13 Mangement is happy again.
 
+ </details>
 </details>
 
 
 
 <details markdown="1">
-<summary> 
-# Q.4 : Pod Ready if Service is reachable
+<summary> Question.4 : Pod Ready if Service is reachable
+</summary>
+# Pod Ready if Service is reachable
 
 `Task weight: 4%`
 
@@ -415,9 +423,11 @@ Do the following in Namespace `default`. Create a single Pod named `ready-if-ser
 Create a second Pod named `am-i-ready` of image `nginx:1.16.1-alpine` with label `id: cross-server-ready`. The already existing Service service-am-i-ready should now have that second Pod as endpoint.
 
 Now the first Pod should be in ready state, confirm that.
-</summary>
 
-# Answer:
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 It's a bit of an anti-pattern for one Pod to check another Pod for being ready using probes, hence the normally available `readinessProbe.httpGet` doesn't work for absolute remote urls. Still the workaround requested in this task should show how probes and Pod<->Service communication works.
 
@@ -498,13 +508,15 @@ ready-if-service-ready   1/1     Running   0          53s
 
 Look at these Pods coworking together!
 
+ </details>
 </details>
 
 
 
 <details markdown="1">
-<summary> 
-# Q.5 : Kubectl sorting
+<summary> Question.5 : Kubectl sorting
+</summary>
+# Kubectl sorting
 `Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
@@ -516,9 +528,12 @@ There are various Pods in all namespaces. Write a command into `/opt/course/5/fi
 Write a second command into `/opt/course/5/find_pods_uid.sh` which lists all Pods sorted by field `metadata.uid`. Use `kubectl` sorting for both commands.
 
  
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 A good resources here (and for many other things) is the kubectl-cheat-sheet. You can reach it fast when searching for "cheat sheet" in the Kubernetes docs.
 ```#!/bin/bash
@@ -553,13 +568,14 @@ project-hamster   web-hamster-shop-849966f479-278vp         ...          63m
 project-c13       c13-3cc-web-646b6c8756-qsg4b              ...          63m
 ```
 
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.6 : Storage, PV, PVC, Pod volume
-
+<summary> Qusetion.6 : Storage, PV, PVC, Pod volume
+</summary>
+# Storage, PV, PVC, Pod volume
 `Task weight: 8%`
 
 Use context: `kubectl config use-context k8s-c1-H`
@@ -571,9 +587,13 @@ Create a new PersistentVolume named `safari-pv`. It should have a capacity of 2G
 Next create a new PersistentVolumeClaim in Namespace `project-tiger` named `safari-pvc` . It should request 2Gi storage, accessMode ReadWriteOnce and should not define a storageClassName. The PVC should bound to the PV correctly.
 
 Finally create a new Deployment `safari` in Namespace `project-tiger` which mounts that volume at `/tmp/safari-data`. The Pods of that Deployment should be of image `httpd:2.4.41-alpine`.
-</summary>
 
-#Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 
 ```shell
@@ -692,14 +712,14 @@ We can confirm its mounting correctly:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-n2sjj (ro)
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.7 : Node and Pod Resource Usage
-
+<summary> Qusetion.7: Node and Pod Resource Usage
+</summary>
+# Node and Pod Resource Usage
 `Task weight: 1%`
 
 Use context: `kubectl config use-context k8s-c1-H`
@@ -713,10 +733,13 @@ The metrics-server hasn't been installed yet in the cluster, but it's something 
 Please write the commands into `/opt/course/7/node.sh` and `/opt/course/7/pod.sh`.
 
  
-</summary>
 
-Answer: 
 
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+ 
 The command we need to use here is top:
 ```shell
 ➜ k top -h
@@ -760,14 +783,14 @@ With this we can finish this task:
 kubectl top pod --containers=true
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.8 : Get Master Information
-
+<summary> Qusetion.8: Get Master Information
+</summary>
+# Get Master Information
 `Task weight: 2%`
 
 Use context: `kubectl config use-context k8s-c1-H`
@@ -787,11 +810,13 @@ kube-controller-manager: [TYPE]
 etcd: [TYPE]
 dns: [TYPE] [NAME]
 Choices of `[TYPE]` are: `not-installed`, `process`, `static-pod`, `pod`
-</summary>
 ```
 
 
-# Answer: 
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 We could start by finding processes of the requested components, especially the kubelet at first:
 ```shell
@@ -838,7 +863,6 @@ kube-scheduler-cluster1-master1            1/1     Running            ...   clus
 kube-scheduler-special-cluster1-master1    0/1     CrashLoopBackOff   ...   cluster1-master1
 weave-net-mwj47                            2/2     Running            ...   cluster1-master1
 ```
-</details>
 
 
 There we see the 5 static pods, with `-cluster1-master1` as suffix.
@@ -869,11 +893,13 @@ dns: pod coredns
 
 You should be comfortable investigating a running cluster, know different methods on how a cluster and its services can be setup and be able to troubleshoot and find error sources.
 
+ </details>
+</details>
 
 <details markdown="1">
-<summary> 
-# Q.9 : Kill Scheduler, Manual Scheduling
-
+<summary> Qusetion.9 : Kill Scheduler, Manual Scheduling
+</summary>
+# Kill Scheduler, Manual Scheduling
 `Task weight: 5%`
 
 Use context: `kubectl config use-context k8s-c2-AC`
@@ -888,10 +914,14 @@ Now you're the scheduler and have all its power, manually schedule that Pod on n
 
 Start the kube-scheduler again and confirm its running correctly by creating a second Pod named `manual-schedule2` of image `httpd:2.4-alpine` and check if it's running on cluster2-worker1.
 
-</summary>
 
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 Stop the Scheduler
 First we find the master node:
@@ -1021,13 +1051,14 @@ manual-schedule2   1/1     Running   ...   cluster2-worker1
 
 Back to normal.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.10 : RBAC ServiceAccount Role RoleBinding
+<summary> Qusetion.10 : RBAC ServiceAccount Role RoleBinding
+</summary>
+# RBAC ServiceAccount Role RoleBinding
 
 `Task weight: 6%`
 
@@ -1038,9 +1069,13 @@ Use context: `kubectl config use-context k8s-c1-H`
 Create a new ServiceAccount `processor` in Namespace `project-hamster`. Create a Role and RoleBinding, both named `processor` as well. These should allow the new SA to only create Secrets and ConfigMaps in that Namespace.
 
  
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 Let's talk a little about RBAC resources
 A ClusterRole|Role defines a set of permissions and where it is available, in the whole cluster or just a single Namespace.
@@ -1156,13 +1191,14 @@ no
 
 Done.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.11 : DaemonSet on all Nodes
+<summary> Qusetion.11 : DaemonSet on all Nodes
+</summary>
+# DaemonSet on all Nodes
 
 `Task weight: 4%`
 
@@ -1173,9 +1209,12 @@ Use context: `kubectl config use-context k8s-c1-H`
 Use Namespace `project-tiger` for the following. Create a DaemonSet named `ds-important` with image `httpd:2.4-alpine` and labels `id=ds-important` and `uuid=18426a0b-5f59-4e10-923f-c0e078e82462`. The Pods it creates should request 10 millicore cpu and 10 mebibyte memory. The Pods of that DaemonSet should run on all nodes, master and worker.
 
  
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 As of now we aren't able to create a DaemonSet directly using kubectl, so we create a Deployment and just change it up:
 ```shell
@@ -1244,13 +1283,14 @@ ds-important-lh5ts        1/1     Running   ...   cluster1-master1
 ds-important-qhjcq        1/1     Running   ...   cluster1-worker2
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.12 : Deployment on all Nodes
+<summary> # Qusetion.12 : Deployment on all Nodes
+</summary>
+# Deployment on all Nodes
 
 `Task weight: 6%`
 
@@ -1263,9 +1303,12 @@ Use Namespace `project-tiger` for the following. Create a Deployment named `depl
 There should be only ever one Pod of that Deployment running on one worker node. We have two worker nodes: `cluster1-worker1` and `cluster1-worker2`. Because the Deployment has three replicas the result should be that on both nodes one Pod is running. The third Pod won't be scheduled, unless a new worker node will be added.
 
 In a way we kind of simulate the behaviour of a DaemonSet here, but using a Deployment and a fixed number of replicas.
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 There are two possible ways, one using `podAntiAffinity` and one using `topologySpreadConstraint`.
 
@@ -1393,13 +1436,15 @@ Or our topologySpreadConstraints:
 ```log
 Warning  FailedScheduling  16s   default-scheduler  0/3 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 2 node(s) didn't match pod topology spread constraints.
 ```
+ </details>
 </details>
 
 
 
 <details markdown="1">
-<summary> 
-# Q.13 : Multi Containers and Pod shared Volume
+<summary> Qusetion.13 : Multi Containers and Pod shared Volume
+</summary>
+# Multi Containers and Pod shared Volume
 
 `Task weight: 4%`
 
@@ -1416,9 +1461,12 @@ Container `c2` should be of image `busybox:1.31.1` and write the output of the `
 Container `c3` should be of image `busybox:1.31.1` and constantly send the content of file `date.log` from the shared volume to stdout. You can use `tail -f /your/vol/path/date.log` for this.
 
 Check the logs of container `c3` to confirm correct setup.
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 First we create the Pod template:
 ```shell
@@ -1498,13 +1546,14 @@ Sat Dec  7 16:05:15 UTC 2077
 Sat Dec  7 16:05:16 UTC 2077
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.14 : Find out Cluster Information
+<summary> Qusetion.14 : Find out Cluster Information
+</summary>
+# Find out Cluster Information
 
 `Task weight: 2%`
 
@@ -1528,9 +1577,13 @@ You're ask to find out following information about the cluster `k8s-c1-H`:
 ```
 
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 # How many master and worker nodes are available?
 ```
@@ -1588,13 +1641,14 @@ The resulting /opt/course/14/cluster-info could look like:
 5: -cluster1-worker1
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.15 : Cluster Event Logging
+<summary> Qusetion.15 : Cluster Event Logging
+</summary>
+# Cluster Event Logging
 
 `Task weight: 3%`
 
@@ -1609,9 +1663,13 @@ Now kill the kube-proxy Pod running on node cluster2-worker1 and write the event
 Finally kill the containerd container of the kube-proxy Pod on node cluster2-worker1 and write the events into `/opt/course/15/container_kill.log`.
 
 Do you notice differences in the events both actions caused?
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 
 ```#!/bin/bash
@@ -1672,13 +1730,14 @@ kube-system   13s         Normal    Started      pod/kube-proxy-m52sx    ...
 
 Comparing the events we see that when we deleted the whole Pod there were more things to be done, hence more events. For example was the DaemonSet in the game to re-create the missing Pod. Where when we manually killed the main container of the Pod, the Pod would still exist but only its container needed to be re-created, hence less events.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.16 : Namespaces and Api Resources
+<summary> Question.16 : Namespaces and Api Resources
+</summary>
+# Namespaces and Api Resources
 
 `Task weight: 2%`
 
@@ -1691,9 +1750,13 @@ Create a new Namespace called `cka-master`.
 Write the names of all namespaced Kubernetes resources (like Pod, Secret, ConfigMap...) into `/opt/course/16/resources.txt`.
 
 Find the `project-*` Namespace with the highest number of `Roles` defined in it and write its name and amount of Roles into `/opt/course/16/crowded-namespace.txt`.
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 # Namespace and Namespaces Resources
 We create a new Namespace:
@@ -1773,14 +1836,15 @@ Finally we write the name and amount into the file:
 project-c14 with 300 resources
 ```
 
-
+ </details>
 </details>
 
 
 
 <details markdown="1">
-<summary> 
-# Q.17 : Find Container of Pod and check info
+<summary> Question.17 : Find Container of Pod and check info
+</summary>
+# Find Container of Pod and check info
 
 `Task weight: 3%`
 
@@ -1796,9 +1860,13 @@ Using command `crictl`:
  2. Write the logs of the container into `/opt/course/17/pod-container.log`
 
 
-</summary>
 
-# Answer:
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 First we create the Pod:
 ```shell
@@ -1848,13 +1916,14 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Mon Sep 13 13:32:18.555610 2021] [core:notice] [pid 1:tid 139929534545224] AH00094: Command line: 'httpd -D FOREGROUND'
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.18 : Fix Kubelet
+<summary> # Question.18 : Fix Kubelet
+</summary>
+# Fix Kubelet
 
 `Task weight: 8%`
 
@@ -1866,9 +1935,13 @@ There seems to be an issue with the kubelet not running on `cluster3-worker1`. F
 
 Write the reason of the issue into `/opt/course/18/reason.txt`.
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 The procedure on tasks like these should be to check if the kubelet is running, if not start it, then check its logs and correct errors if there are some.
 
@@ -1956,14 +2029,14 @@ Finally we write the reason into the file:
 wrong path to kubelet binary specified in service config
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.19 : Create Secret and mount into Pod
-
+<summary>  Question.19 : Create Secret and mount into Pod
+</summary>
+# Create Secret and mount into Pod
 `Task weight: 3%`
 
 Do the following in a new Namespace secret. Create a Pod named secret-pod of image busybox:1.31.1 which should keep running for some time. It should be able to run on master nodes as well, create the proper toleration.
@@ -1974,9 +2047,13 @@ Create a new Secret in Namespace secret called secret2 which should contain user
 
 Confirm everything is working.
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 First we create the Namespace and the requested Secrets in it:
 ```
@@ -2098,13 +2175,14 @@ APP_USER=user1
 ```
 All is good.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.20 : Update Kubernetes Version and join
+<summary> Question.20 : Update Kubernetes Version and join
+</summary>
+# Update Kubernetes Version and join
 
 `Task weight: 10%`
 
@@ -2117,7 +2195,12 @@ Your coworker said node `cluster3-worker2` is running an older Kubernetes versio
 
 </summary>
 
-# Answer: 
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
+
 
 # Upgrade Kubernetes to cluster3-master1 version
 Search in the docs for kubeadm upgrade: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade
@@ -2269,13 +2352,14 @@ cluster3-worker2   Ready    <none>                 107s   v1.23.1
 ```
 We see `cluster3-worker2` is now available and up to date.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.21 : Create a Static Pod and Service
+<summary> Question.21 : Create a Static Pod and Service
+</summary>
+# Create a Static Pod and Service
 
 `Task weight: 2%`
 
@@ -2288,9 +2372,13 @@ Create a `Static Pod` named `my-static-pod` in Namespace `default` on `cluster3-
 Then create a NodePort Service named `static-pod-service` which exposes that static Pod on port 80 and check if it has Endpoints and if its reachable through the `cluster3-master1` internal IP address. You can connect to the internal node IPs from your main terminal.
 
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 ```shell
 ➜ ssh cluster3-master1
@@ -2375,13 +2463,14 @@ endpoints/static-pod-service   10.32.0.4:80   30s
 ```
 Looking good.
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.22 : Check how long certificates are valid
+<summary> Question.22 : Check how long certificates are valid
+</summary>
+# Check how long certificates are valid
 
 `Task weight: 2%`
 
@@ -2398,9 +2487,12 @@ Write the correct `kubeadm` command that would renew the apiserver server certif
  
 
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 First let's find that certificate:
 ```shell
@@ -2443,13 +2535,14 @@ Looking good. And finally we write the command that would renew all certificates
 kubeadm certs renew apiserver
 ```
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.23 : Kubelet client/server cert info
+<summary> Question.23 : Kubelet client/server cert info 
+</summary>
+# Kubelet client/server cert info
 
 `Task weight: 2%`
 
@@ -2468,9 +2561,13 @@ Write the information into file `/opt/course/23/certificate-info.txt`.
 Compare the "Issuer" and "Extended Key Usage" fields of both certificates and make sense of these.
 
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 To find the correct kubelet certificate directory, we can look for the default value of the `--cert-dir` parameter for the kubelet. For this search for "kubelet" in the Kubernetes docs which will lead to: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet. We can check if another certificate directory has been configured using `ps aux` or in `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf`.
 
@@ -2500,13 +2597,14 @@ We see that the server certificate was generated on the worker node itself and t
 
 More about this: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping
 
-
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.24 : NetworkPolicy
+<summary> Question.24 : NetworkPolicy
+</summary>
+# NetworkPolicy
 
 `Task weight: 9%`
 
@@ -2525,9 +2623,12 @@ Use the `app` label of Pods in your policy.
 After implementation, connections from `backend-*` Pods to `vault-*` Pods on port 3333 should for example no longer work.
 
 
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 First we look at the existing Pods and their labels:
 ```shell
@@ -2671,12 +2772,14 @@ Also helpful to use `kubectl describe` on the NP to see how k8s has interpreted 
 
 Great, looking more secure. Task done.
 
+ </details>
 </details>
 
 
 <details markdown="1">
-<summary> 
-# Q.25 : Etcd Snapshot Save and Restore
+<summary> Question.25 : Etcd Snapshot Save and Restore
+</summary>
+# Etcd Snapshot Save and Restore
 
 `Task weight: 8%`
 
@@ -2691,9 +2794,13 @@ Then create a Pod of your kind in the cluster.
 Finally restore the backup, confirm the cluster is still working and that the created Pod is no longer with us.
 
  
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
+
 
 # Etcd Backup
 First we log into the master and try to create a snapshop of etcd:
@@ -2884,12 +2991,13 @@ No resources found in default namespace.
 ```
 Awesome, backup and restore worked as our pod is gone.
 
-
+ </details>
 </details>
 
 <details markdown="1">
-<summary> 
-# Extra Question 1  : Find Pods first to be terminated
+<summary> Extra Question 1  : Find Pods first to be terminated
+</summary>
+# Find Pods first to be terminated
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -2898,9 +3006,12 @@ Use context: `kubectl config use-context k8s-c1-H`
 Check all available Pods in the Namespace `project-c13` and find the names of those that would probably be terminated first if the nodes run out of resources (cpu or memory) to schedule all Pods. Write the Pod names into `/opt/course/e1/pods-not-stable.txt`.
 
  
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 When available cpu or memory resources on the nodes reach their limit, Kubernetes will look for Pods that are using more resources than they requested. These will be the first candidates for termination. If some Pods containers have no resource requests/limits set, then by default those are considered to use more than requested.
 
@@ -2989,14 +3100,15 @@ Here we see three with BestEffort, which Pods get that don't have any memory or 
 
 A good practice is to always set resource requests and limits. If you don't know the values your containers should have you can find this out using metric tools like Prometheus. You can also use `kubectl top pod` or even `kubectl exec` into the container and use `top` and similar tools.
 
-
+ </details>
 </details>
 
 
 
 <details markdown="1">
-<summary> 
-# Extra Question 2 : Curl Manually Contact API
+<summary> Extra Question 2 : Curl Manually Contact API
+</summary>
+# Curl Manually Contact API
 
 Use context: `kubectl config use-context k8s-c1-H`
 
@@ -3005,9 +3117,12 @@ Use context: `kubectl config use-context k8s-c1-H`
 There is an existing ServiceAccount `secret-reader` in Namespace `project-hamster`. Create a Pod of image `curlimages/curl:7.65.3` named `tmp-api-contact` which uses this ServiceAccount. Make sure the container keeps running.
 
 Exec into the Pod and use `curl` to access the Kubernetes Api of that cluster manually, listing all available secrets. You can ignore insecure https connection. Write the command(s) for this into file `/opt/course/e4/list-secrets.sh`.
-</summary>
 
-# Answer: 
+
+ <details markdown="1">
+ <summary> 
+ Answer:
+ </summary>
 
 https://kubernetes.io/docs/tasks/run-application/access-api-from-pod
 
@@ -3110,7 +3225,7 @@ Finally write the commands into the requested location:
 TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
 curl -k https://kubernetes.default/api/v1/secrets -H "Authorization: Bearer ${TOKEN}"
 ```
-
+ </details>
 </details>
 
 
