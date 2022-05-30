@@ -179,7 +179,7 @@ spec:
   capacity:    
   storage: 100Mi  
   accessModes:    
-​    - ReadWriteMany  
+    - ReadWriteMany  
   hostPath:    # directory location on host    
   path: /pv/data-analytics
 ```
